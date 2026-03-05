@@ -1,0 +1,214 @@
+//
+//  DataBase.swift
+//  ProjetGlowCare
+//
+//  Created by Ambre Brisson on 05/03/2026.
+//
+
+import Foundation
+
+// Routine
+struct Routine: Identifiable {
+    var id = UUID()
+    var routineName: String
+    var time: Int
+    var step: [StepRoutine]
+}
+
+// Etape Routine
+struct StepRoutine: Identifiable {
+    var id = UUID()
+    var order: Int
+    var stepName: String
+    var description: String
+    var time: Int
+}
+
+// Produit
+struct Product: Identifiable {
+    var id = UUID()
+    var productName: String
+    var brand: String
+    var category: String
+    var type: String
+    var description: String
+    var note: String
+    var image: String
+}
+
+// Avis Produit
+struct ProductReview: Identifiable {
+    var id = UUID()
+    var productId: UUID
+    var userId: UUID
+    var comment: String
+    var date: Int
+}
+
+// Vidéo
+struct Video: Identifiable {
+    var id = UUID()
+    var videoName: String
+    var category: String
+    var urlVideo: String
+    var description: String
+    var image: String
+}
+
+// Conseil Beauté
+struct BeautyTip: Identifiable {
+    var id = UUID()
+    var tipName: String
+    var category: String
+    var description: String
+    var image: String
+}
+
+// Conseil Bien-Être
+struct CareTip: Identifiable {
+    var id = UUID()
+    var careName: String
+    var category: String
+    var description: String
+    var image: String
+}
+
+// Notification Routine
+//struct RoutineNotification: Identifiable {
+//    var id = UUID()
+//    var message: String
+//    var hour: String
+//    var isActive: Bool
+//}
+
+var products: [Product] = [
+    
+    Product (
+        productName: "Hydrating Cleanser",
+        brand: "CeraVe",
+        category: "Nettoyant",
+        type: "Sèche",
+        description: "Nettoyant doux hydratant",
+        note: "",
+        image: ""
+    ),
+    
+    Product (
+        productName: "Niacinamide Serum",
+        brand: "The Ordinary",
+        category: "Sérum",
+        type: "Grasse",
+        description: "Réduit les imperfections",
+        note: "",
+        image: ""
+    ),
+    
+    Product (
+        productName: "Moisturizing Cream",
+        brand: "La Roche Posay",
+        category: "Crème",
+        type: "Mixte",
+        description: "Crème hydratante visage",
+        note: "",
+        image: ""
+    )
+]
+
+var videos: [Video] = [
+    
+    Video (
+        videoName: "Routine peau sèche",
+        category: "Skincare",
+        urlVideo: "",
+        description: "Routine simple pour peau sèche",
+        image: ""
+    ),
+    
+    Video (
+        videoName: "Nettoyer sa peau correctement",
+        category: "Skincare",
+        urlVideo: "",
+        description: "Comment bien nettoyer sa peau",
+        image: ""
+    ),
+    
+    Video (
+        videoName: "Routine rapide matin",
+        category: "Routine",
+        urlVideo: "",
+        description: "Routine en moins de 5 minutes",
+        image: ""
+    )
+]
+
+var beautytips: [BeautyTip] = [
+
+    BeautyTip (
+        tipName: "Boire suffisamment d'eau",
+        category: "Peau",
+        description: "Boire au moins 1.5L d'eau par jour aide à hydrater la peau.",
+        image: ""
+    ),
+
+    BeautyTip (
+        tipName: "Bien se démaquiller",
+        category: "Peau",
+        description: "Se démaquiller chaque soir évite les imperfections.",
+        image: ""
+    ),
+
+    BeautyTip (
+        tipName: "Protéger sa peau du soleil",
+        category: "Peau",
+        description: "Utiliser une crème SPF protège du vieillissement.",
+        image: ""
+    )
+]
+
+var careTips : [CareTip] = [
+
+    CareTip (
+        careName: "Dormir suffisamment",
+        category: "Sommeil",
+        description: "Un bon sommeil aide la peau à se régénérer.",
+        image: ""
+    ),
+
+    CareTip(
+        careName: "Réduire le stress",
+        category: "Stress",
+        description: "Le stress peut provoquer des imperfections.",
+        image: ""
+    ),
+
+    CareTip(
+        careName: "Manger équilibré",
+        category: "Nutrition",
+        description: "Une alimentation équilibrée améliore la qualité de la peau.",
+        image: ""
+    )
+]
+
+var routineSteps: [StepRoutine] = [
+
+    StepRoutine (
+        order: 1,
+        stepName: "Nettoyer",
+        description: "Utiliser un nettoyant doux pour éliminer les impuretés.",
+        time: 1
+    ),
+
+    StepRoutine (
+        order: 2,
+        stepName: "Sérum",
+        description: "Appliquer un sérum adapté à votre type de peau.",
+        time: 1
+    ),
+
+    StepRoutine (
+        order: 3,
+        stepName: "Hydrater",
+        description: "Appliquer une crème hydratante.",
+        time: 1
+    )
+]
