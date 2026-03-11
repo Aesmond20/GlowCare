@@ -45,6 +45,12 @@ struct TodayPage: View {
                             .font(.title3)
                     }
                     
+                    ForEach(routineSteps) { step in
+                        NavigationLink(destination: EmptyView()) {
+//                            stepName: step.stepName,
+//                            descritpion: step.description
+                        }
+                    }
                 }
                 .padding()
             }

@@ -47,7 +47,7 @@ struct RoutineView: View {
         Text("00:05:00")
             .font(.largeTitle)
         
-        NavigationLink(destination: routineDetailView ()) {
+        NavigationLink(destination: RoutineDetailView ()) {
             Text("Ma Routine Personnelle")
                 .padding()
                 .frame(maxWidth: .infinity)

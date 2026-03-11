@@ -7,6 +7,18 @@
 
 import Foundation
 
+// User
+struct User: Identifiable {
+    var id = UUID()
+    var firstName: String
+    var lastName: String
+    var email: String
+    var password: String
+//    var dateOfBirth: Date
+//    var weight: Double
+//    var height: Double
+}
+
 // Routine
 struct Routine: Identifiable {
     var id = UUID()
@@ -20,6 +32,7 @@ struct StepRoutine: Identifiable {
     var id = UUID()
     var order: Int
     var stepName: String
+    var image: String
     var description: String
     var time: Int
 }
@@ -34,13 +47,13 @@ struct Product: Identifiable {
     var description: String
     var note: String
     var image: String
+    var productReview: ProductReview
 }
 
 // Avis Produit
 struct ProductReview: Identifiable {
     var id = UUID()
-    var productId: UUID
-    var userId: UUID
+    var user: User
     var comment: String
     var date: Int
 }
@@ -90,7 +103,8 @@ var products: [Product] = [
         type: "Sèche",
         description: "Nettoyant doux hydratant",
         note: "",
-        image: ""
+        image: "",
+        productReview: productsReview[0]
     ),
     
     Product (
@@ -100,7 +114,8 @@ var products: [Product] = [
         type: "Grasse",
         description: "Réduit les imperfections",
         note: "",
-        image: ""
+        image: "",
+        productReview: productsReview[0]
     ),
     
     Product (
@@ -110,9 +125,14 @@ var products: [Product] = [
         type: "Mixte",
         description: "Crème hydratante visage",
         note: "",
-        image: ""
+        image: "",
+        productReview: productsReview[0]
     )
 ]
+
+var productsReview = [ProductReview(user: users, comment: "", date: 08/03/2026)]
+
+var users = User(firstName: "Léa", lastName: "Martin", email: "lea@gmail.com", password: "123456")
 
 var videos: [Video] = [
     
@@ -194,6 +214,7 @@ var routineSteps: [StepRoutine] = [
     StepRoutine (
         order: 1,
         stepName: "Nettoyer",
+        image: "",
         description: "Utiliser un nettoyant doux pour éliminer les impuretés.",
         time: 1
     ),
@@ -201,6 +222,7 @@ var routineSteps: [StepRoutine] = [
     StepRoutine (
         order: 2,
         stepName: "Sérum",
+        image: "",
         description: "Appliquer un sérum adapté à votre type de peau.",
         time: 1
     ),
@@ -208,6 +230,7 @@ var routineSteps: [StepRoutine] = [
     StepRoutine (
         order: 3,
         stepName: "Hydrater",
+        image: "",
         description: "Appliquer une crème hydratante.",
         time: 1
     )
