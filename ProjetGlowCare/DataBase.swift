@@ -7,20 +7,26 @@
 
 import Foundation
 
+struct ProductsResponse: Codable {
+    let records: [ProductRecord]
+}
+
+struct ProductRecord: Codable {
+    let fields: Product
+}
+
 // User
-struct User: Identifiable {
+struct User: Identifiable, Codable {
     var id = UUID()
     var firstName: String
     var lastName: String
     var email: String
     var password: String
-//    var dateOfBirth: Date
-//    var weight: Double
-//    var height: Double
+    var favoriteProduct: [String]
 }
 
 // Routine
-struct Routine: Identifiable {
+struct Routine: Identifiable, Codable {
     var id = UUID()
     var routineName: String
     var time: Int
@@ -28,7 +34,7 @@ struct Routine: Identifiable {
 }
 
 // Etape Routine
-struct StepRoutine: Identifiable {
+struct StepRoutine: Identifiable, Codable {
     var id = UUID()
     var order: Int
     var stepName: String
@@ -38,20 +44,18 @@ struct StepRoutine: Identifiable {
 }
 
 // Produit
-struct Product: Identifiable {
-    var id = UUID()
+struct Product: Codable {
     var productName: String
     var brand: String
     var category: String
     var type: String
     var description: String
-    var note: String
+    var note: Int
     var image: String
-    var productReview: ProductReview
 }
 
 // Avis Produit
-struct ProductReview: Identifiable {
+struct ProductReview: Identifiable, Codable {
     var id = UUID()
     var user: User
     var comment: String
@@ -59,7 +63,7 @@ struct ProductReview: Identifiable {
 }
 
 // Vidéo
-struct Video: Identifiable {
+struct Video: Identifiable, Codable {
     var id = UUID()
     var videoName: String
     var category: String
@@ -69,7 +73,7 @@ struct Video: Identifiable {
 }
 
 // Conseil Beauté
-struct BeautyTip: Identifiable {
+struct BeautyTip: Identifiable, Codable {
     var id = UUID()
     var tipName: String
     var category: String
@@ -78,7 +82,7 @@ struct BeautyTip: Identifiable {
 }
 
 // Conseil Bien-Être
-struct CareTip: Identifiable {
+struct CareTip: Identifiable, Codable {
     var id = UUID()
     var careName: String
     var category: String
@@ -86,13 +90,19 @@ struct CareTip: Identifiable {
     var image: String
 }
 
-// Notification Routine
-//struct RoutineNotification: Identifiable {
-//    var id = UUID()
-//    var message: String
-//    var hour: String
-//    var isActive: Bool
-//}
+// Type de Peau
+struct SkinType: Identifiable, Codable {
+    var id = UUID()
+    var typeName: String
+    var description: String
+}
+
+// Objectif
+struct Goal: Identifiable, Codable {
+    var id = UUID()
+    var goalName: String
+    var description: String
+}
 
 var products: [Product] = [
     
@@ -102,9 +112,8 @@ var products: [Product] = [
         category: "Nettoyant",
         type: "Sèche",
         description: "Nettoyant doux hydratant",
-        note: "",
-        image: "",
-        productReview: productsReview[0]
+        note: 3,
+        image: "sun.max.fill"
     ),
     
     Product (
@@ -113,9 +122,8 @@ var products: [Product] = [
         category: "Sérum",
         type: "Grasse",
         description: "Réduit les imperfections",
-        note: "",
-        image: "",
-        productReview: productsReview[0]
+        note: 4,
+        image: "drop.fill"
     ),
     
     Product (
@@ -124,15 +132,16 @@ var products: [Product] = [
         category: "Crème",
         type: "Mixte",
         description: "Crème hydratante visage",
-        note: "",
-        image: "",
-        productReview: productsReview[0]
+        note: 5,
+        image: "leaf.fill"
     )
 ]
 
-var productsReview = [ProductReview(user: users, comment: "", date: 08/03/2026)]
+var users = User(firstName: "Léa", lastName: "Martin", email: "lea@gmail.com", password: "123456", favoriteProduct: ["rec3u3BCgBQUvtOr8", "recF2yU1bqk6HZa9m"])
 
-var users = User(firstName: "Léa", lastName: "Martin", email: "lea@gmail.com", password: "123456")
+var productsReview: [ProductReview] = [
+    ProductReview(user: users, comment: "", date: 20260803)
+]
 
 var videos: [Video] = [
     
@@ -216,7 +225,7 @@ var routineSteps: [StepRoutine] = [
         stepName: "Nettoyer",
         image: "",
         description: "Utiliser un nettoyant doux pour éliminer les impuretés.",
-        time: 1
+        time: 2
     ),
 
     StepRoutine (
@@ -235,3 +244,44 @@ var routineSteps: [StepRoutine] = [
         time: 1
     )
 ]
+
+var skinTypes: [SkinType] = [
+    
+    SkinType (
+        typeName: "Sèche",
+        description: "La peau tiraille et manque d’hydratation."
+    ),
+    SkinType (
+        typeName: "Grasse",
+        description: "La peau produit beaucoup de sébum."
+    ),
+    SkinType (
+        typeName: "Mixte",
+        description: "Zone T grasse mais joues normales ou sèches."
+    ),
+    SkinType (
+        typeName: "Normale",
+        description: "Peau équilibrée sans problème particulier."
+    )
+]
+
+var goals: [Goal] = [
+    
+    Goal (
+        goalName: "Hydratation",
+        description: "vuvuvu"
+    ),
+    Goal (
+        goalName: "Alimentation",
+        description: "apsojdoi"
+    ),
+    Goal (
+        goalName: "Stress",
+        description: "aliefobao"
+    ),
+    Goal (
+        goalName: "Sommeil",
+        description: "aoefboab"
+    )
+]
+
