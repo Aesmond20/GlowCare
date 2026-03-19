@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ProductDetailView: View {
-
+    
     var product: Product
+    
+    @Environment(\.dismiss) var dismiss
+    @Environment(Notif.self) var notif
 
     var body: some View {
         
@@ -17,11 +20,10 @@ struct ProductDetailView: View {
             VStack {
                 HStack {
                     
-                    NavigationLink(destination: ProfilView()) {
-                        Image("profil")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.left")
                     }
                     
                     Spacer()
@@ -45,9 +47,11 @@ struct ProductDetailView: View {
                     .frame(width: 390, height: 4)
                 
                 ScrollView {
+                    
+                    ProductCardView(product: product)
+                        .padding(.top, 20)
+                    
                     VStack(spacing: 20) {
-                        
-                        ProductCardView(product: product)
                         
                         VStack(alignment: .leading, spacing: 12) {
                             HStack {
@@ -76,7 +80,7 @@ struct ProductDetailView: View {
                             }
                         }
                         .padding()
-                        .background(.white.opacity(0.9))
+                        .background(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .shadow(radius: 4)
                         
@@ -95,7 +99,7 @@ struct ProductDetailView: View {
                             Text("Faites de léger massage afin de bien la faire pénétrer.")
                         }
                         .padding()
-                        .background(.white.opacity(0.9))
+                        .background(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .shadow(radius: 4)
                         
@@ -106,7 +110,7 @@ struct ProductDetailView: View {
                             Divider()
                             
                             HStack(spacing: 12) {
-                                Image("profil")
+                                Image("avis1")
                                     .resizable()
                                     .frame(width: 40, height: 40)
                                     .clipShape(Circle())
@@ -122,15 +126,44 @@ struct ProductDetailView: View {
                                     }
                                 }
                             }
+                            
+                            Text("Très bonne crème, elle hydrate parfaitement ma peau sans laisser de film gras.")
+                                .font(.subheadline)
+                                .foregroundStyle(Color.clair)
+                            
+                            Divider()
+                            
+                            HStack(spacing: 12) {
+                                Image("avis2")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                                
+                                Text("Julien R.")
+                                
+                                Spacer()
+                                
+                                HStack(spacing: 4) {
+                                    ForEach(0..<5) { index in
+                                        Image(systemName: index < 4 ? "star.fill" : "star")
+                                            .foregroundStyle(.yellow)
+                                    }
+                                }
+                            }
+
+                            Text("Texture agréable et odeur légère, je recommande !")
+                                .font(.subheadline)
+                                .foregroundStyle(Color.clair)
                         }
                         .padding()
-                        .background(.white.opacity(0.9))
+                        .background(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .shadow(radius: 4)
                     }
                     .padding()
                 }
             }
+            .navigationBarBackButtonHidden(true)
             .background(
                 Image("background")
                     .resizable()
@@ -142,15 +175,14 @@ struct ProductDetailView: View {
 }
 
 #Preview {
-    ProductDetailView(
-        product: Product(
-            productName: "Hydrating Cleanser",
-            brand: "CeraVe",
-            category: "Nettoyant",
-            type: "Sèche",
-            description: "Nettoyant doux hydratant",
-            note: 3,
-            image: "sun.max.fill"
-        )
-    )
+    ProductDetailView(product: Product (
+        productName: "Hydrating Cleanser",
+        brand: "CeraVe",
+        category: "Nettoyant",
+        type: "Sèche",
+        description: "Nettoyant doux hydratant",
+        note: 3,
+        image: "sun.max.fill"
+    ))
+        .environment(Notif())
 }

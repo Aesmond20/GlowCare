@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct ProjetGlowCareApp: App {
+    
+    @State private var notif = Notif()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(notif)
         }
     }
 }

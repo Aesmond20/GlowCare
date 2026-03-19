@@ -16,14 +16,13 @@ struct ProfilView: View {
 
     var body: some View {
 
-        NavigationStack {
+        ZStack {
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
 
-            ZStack {
-                Image("background")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-
+            ScrollView(showsIndicators: false) {
                 VStack(spacing: 20) {
 
                     Image("profil")
@@ -75,7 +74,6 @@ struct ProfilView: View {
                                 choice: "\(favoriteVideos.count)"
                             )
                         }
-
                     }
                     .background(Color.white)
                     .cornerRadius(15)
@@ -95,9 +93,12 @@ struct ProfilView: View {
                         .padding()
                     }
                 }
+                .padding(.horizontal, 20)
+                .padding()
+
             }
-            .padding()
             .navigationTitle("Profil")
+
         }
     }
 }

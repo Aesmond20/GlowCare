@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct DailyDayView: View {
+    
+    
+    
     var body: some View {
         
         VStack(spacing: 20) {

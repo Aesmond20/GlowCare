@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    
+    @Environment(Notif.self) var notif
+    
     var body: some View {
 
         TabView {
@@ -16,10 +18,16 @@ struct ContentView: View {
                 .tabItem {
                     Label("Aujourd'hui", systemImage: "sun.max")
                 }
+
+            ProductView()
+                .tabItem {
+                    Label("Produits", systemImage: "bag")
+                }
         }
     }
 }
 
 #Preview {
     ContentView()
+        .environment(Notif())
 }

@@ -104,6 +104,19 @@ struct Goal: Identifiable, Codable {
     var description: String
 }
 
+// Notifications
+@Observable
+class Notif: Identifiable {
+    var id = UUID()
+    var routineReminder: Bool = false
+    var weekCareReminder: Bool = false
+    var seasonTips: Bool = false
+    var recommendations: Bool = false
+    var popularProducts: Bool = false
+    var selectedTime: Date = Date()
+    var timePicker: Bool = false
+}
+
 var products: [Product] = [
     
     Product (

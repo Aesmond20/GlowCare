@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct TodayView: View {
-
+    
+    @Environment(Notif.self) var notif
+    
     var body: some View {
 
         NavigationStack {
@@ -106,4 +108,5 @@ struct TodayView: View {
 
 #Preview {
     TodayView()
+        .environment(Notif())
 }

@@ -17,7 +17,7 @@ struct ProductCardView: View {
             Image(systemName: product.image)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 70, height: 70)
+                .frame(width: 78, height: 78)
                 .padding(10)
 
             VStack(alignment: .leading, spacing: 8) {

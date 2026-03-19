@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FavoriteProductView: View {
+    
     @State var vmProduct = ProductViewModel()
     var user = users
     @State var products: [Product]
