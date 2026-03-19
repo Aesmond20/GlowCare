@@ -6,10 +6,21 @@
 //
 
 import SwiftUI
-
 struct NavigationView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Liste des produits")
+    }
+}
+
+struct StepsView: View {
+    var body: some View {
+        Text("Étapes de la routine")
+    }
+}
+
+struct VideoView: View {
+    var body: some View {
+        Text("Vidéo explicative")
     }
 }
 
